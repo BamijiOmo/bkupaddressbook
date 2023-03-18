@@ -9,5 +9,12 @@ pipeline {
                 sh "mvn clean package"
             }
         }
+        stage ('Deploy') {
+            steps {
+                sshagent(['jentomcat']) {
+    sh "scp -o StrictHostKeyChecking=no target/*.war ansadmin@3.21.241.234:/home/ansadmin/tomcat/webapps"
+}
+            }
+        }
     }
 }
