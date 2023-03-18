@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    tools {
+maven 'mymaven'
+}
+
+    stages {
+        stage('Temi Maven') {
+            steps {
+                // echo 'Hello World'
+sh 'mvn clean package'
+            }
+        }
+    }
+}
